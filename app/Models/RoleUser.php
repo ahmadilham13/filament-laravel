@@ -21,6 +21,13 @@ class RoleUser extends Model
         'author_id',
     ];
 
+    public const NEED_APPROVAL = true;
+    public const NOT_NEED_APPROVAL = false;
+    public const APPROVE_STATUS = [
+        self::NEED_APPROVAL => 'Need Approve',
+        self::NOT_NEED_APPROVAL => 'No Need Approve'
+    ];
+
 
     // public function user() : HasMany
     // {
