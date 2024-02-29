@@ -53,7 +53,7 @@ class User extends Authenticatable implements FilamentUser
     ];
 
 
-    public function role() : BelongsTo
+    public function role_user() : BelongsTo
     {
         return $this->belongsTo(RoleUser::class);
     }
