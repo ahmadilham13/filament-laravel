@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,18 +17,20 @@ class RoleUserSeeder extends Seeder
     {
         if (! DB::table('role_users')->where('name', '=', 'Super Admin')->exists()) {
             DB::table('role_users')->insert([
+                'id'    => uniqid(),
                 'name' => 'Super Admin',
                 'need_approval' => false,
-                'author_id' => 1,
+                'author_id' => null,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ]);
         }
 
         if (! DB::table('role_users')->where('name', '=', 'Customer')->exists()) {
             DB::table('role_users')->insert([
+                'id'    => uniqid(),
                 'name' => 'Customer',
                 'need_approval' => true,
-                'author_id' => 1,
+                'author_id' => null,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ]);
         }

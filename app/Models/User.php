@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Traits\UuidTrait;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,11 +15,11 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements FilamentUser
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, UuidTrait;
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return str_ends_with($this->role_user_id, 1) && $this->hasVerifiedEmail();
+        return str_ends_with($this->role_user->name, 'Super Admin') && $this->hasVerifiedEmail();
     }
     /**
      * The attributes that are mass assignable.
