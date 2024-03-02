@@ -19,9 +19,21 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        if($this->command->confirm('Do You want to Refresh migration before seeding, it will clear all old data ?')) {
+            $this->command->call('migrate:fresh');
+            $this->command->info('Data cleared, starting from blank database.');
+        }
+
         $this->call([
             RoleUserSeeder::class,
             UserSeeder::class,
         ]);
+        $this->command->info('sample user seeded.');
+
+        if($this->command->confirm('Do You want to seed some sample product ?')) {
+            $this->call(CategorySeeder::class);
+            $this->call(ProductSeeder::class);
+            $this->command->info('10 sample products seeded.');
+        }
     }
 }

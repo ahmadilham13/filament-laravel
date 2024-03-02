@@ -38,6 +38,13 @@ class Product extends Model
         self::INACTIVE => 'Inactive',
     ];
 
+    public const STATUS_IN_STOCK = 'IN_STOCK';
+    public const STATUS_OUT_OF_STOCK = 'OUT_OF_STOCK';
+    public const STOCK_STATUSSES = [
+        self::STATUS_IN_STOCK => 'In Stock',
+        self::STATUS_OUT_OF_STOCK => 'Out of Stock',
+    ];
+
     public function category() : BelongsTo
     {
         return $this->belongsTo(Category::class);
