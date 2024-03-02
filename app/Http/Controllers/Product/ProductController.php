@@ -30,6 +30,7 @@ class ProductController extends BaseController
         $this->setSearch($request);
         $this->setPagination($request);
         $this->setSort($request);
+        $this->setPriceRange($request);
 
         $categoryRequest = $request->query('category') ?? '';
 
@@ -40,7 +41,8 @@ class ProductController extends BaseController
             sortDirection: $this->sortDirection,
             perPage: $this->pageSize,
             currentPage: $this->page,
-            categoryId: $categoryRequest
+            categoryId: $categoryRequest,
+            priceRange: $this->priceRange,
         );
         return $this->loadTheme('product.index', [
             'categories'    => $categories,
@@ -48,6 +50,8 @@ class ProductController extends BaseController
             'search'        => $this->search,
             'sortChoices'   => $this->sortChoices,
             'sortBy'        => $this->sortBy . '-' . $this->sortDirection,
+            'price_min'     => $this->price_min,
+            'price_max'     => $this->price_max,
         ]);
     }
 

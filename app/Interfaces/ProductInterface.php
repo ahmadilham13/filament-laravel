@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 
 interface ProductInterface
 {
-    public function GetPaginatedProduct(string $search, string $sortBy, string $sortDirection, int $perPage = 10, int $currentPage = 1, string $categoryId) : LengthAwarePaginator;
+    public function GetPaginatedProduct(string $search, string $sortBy, string $sortDirection, int $perPage = 10, int $currentPage = 1, string $categoryId, array $priceRange) : LengthAwarePaginator;
 }
 
 ?>

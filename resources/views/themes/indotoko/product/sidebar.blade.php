@@ -24,8 +24,8 @@
                         <div id="slider-range"></div>
                         <div class="price_slider_amount">
                             <div class="label-input d-lg-flex justify-content-between">
-                                <input type="hidden" id="min_price" value="1"/>
-                                <input type="hidden" id="max_price" value="10"/>
+                                <input type="hidden" id="min_price" value="{{ $price_min }}"/>
+                                <input type="hidden" id="max_price" value="{{ $price_max }}"/>
                                 <input type="text" id="amount" name="price" placeholder="Add Your Price" />
                                 <button type="submit" class="btn-first-sm">Filter</button>
                             </div>
