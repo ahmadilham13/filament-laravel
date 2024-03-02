@@ -1,9 +1,9 @@
 <div>
     <form action="{{ route('product.index') }}" method="GET" class="d-flex gap-2">
         @csrf
-        <select name="sort" id="" class="form-select">
+        <select name="sortBy" class="form-select">
             @foreach ($sortChoices as $key => $value)
-                <option value="{{ $key }}" @if ($sortBy == $value) selected @endif>{{ $value }}</option>
+                <option value="{{ $key }}" @if ($sortBy == $key) selected @endif>{{ $value }}</option>
             @endforeach
         </select>
         <button type="submit" class="btn-first-sm">Filter</button>

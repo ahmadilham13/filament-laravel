@@ -5,10 +5,11 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <div class="input-group mx-auto mt-5 mt-lg-0">
-            <input type="text" class="form-control" placeholder="Mau cari apa?" aria-label="Mau cari apa?" aria-describedby="button-addon2">
-            <button class="btn btn-outline-warning" type="button" id="button-addon2"><i class="bx bx-search" ></i></button>
-          </div>
+          <form action="{{ route('product.index') }}" method="GET" class="input-group mx-auto mt-5 mt-lg-0">
+            @csrf
+            <input type="text" name="search" class="form-control" placeholder="Mau cari apa?" aria-label="Mau cari apa?" value="{{ $search ?? ''  }}">
+            <button class="btn btn-outline-warning" type="submit"><i class="bx bx-search" ></i></button>
+          </form>
           <ul class="navbar-nav ms-auto mt-3 mt-sm-0">
             <li class="nav-item me-3">
               <a class="nav-link active" href="#">
@@ -35,10 +36,10 @@
               </ul>
             </div>
             <li class="nav-item mt-5 mt-lg-0 text-center">
-              <a class="nav-link btn-second me-lg-3" href="#">Login</a>
+              <a class="nav-link btn-second me-lg-3" href="{{ route('login') }}">Login</a>
             </li>
             <li class="nav-item mt-3 mt-lg-0 text-center">
-              <a class="nav-link btn-first" href="#">Register</a>
+              <a class="nav-link btn-first" href="{{ route('register') }}">Register</a>
             </li>
           </ul>
         </div>
