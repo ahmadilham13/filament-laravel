@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\HasPagination;
+use App\Traits\HasSearch;
+use App\Traits\HasSort;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, ValidatesRequests;
+    use AuthorizesRequests, ValidatesRequests, HasPagination, HasSearch, HasSort;
 
     protected $data = [];
-    protected $perPage = 10;
 
     public function __construct()
     {

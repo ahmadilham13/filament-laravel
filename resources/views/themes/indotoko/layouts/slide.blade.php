@@ -1,7 +1,7 @@
 <div class="container menu-wrapper fixed-top d-none d-lg-block">
     <div class="menu d-flex justify-content-center align-items-center">
       <a class="nav-link active" href="{{ route('index') }}">Home</a>
-      <a class="nav-link" href="{{ route('index') }}">Products</a>
+      <a class="nav-link" href="{{ route('product.index') }}">Products</a>
       {{-- <a class="nav-link" href="products.html">New Arrival</a>
       <a class="nav-link" href="products.html">Blog</a> --}}
     </div>

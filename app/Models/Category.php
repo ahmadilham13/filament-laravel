@@ -20,4 +20,9 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function getPermalink() : string
+    {
+        return route('product.index', ['category' => $this->id]);
+    }
 }
