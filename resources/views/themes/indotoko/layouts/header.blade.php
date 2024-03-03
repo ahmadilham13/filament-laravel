@@ -35,12 +35,22 @@
                 <li><a class="dropdown-item" href="products.html">Blog</a></li>
               </ul>
             </div>
-            <li class="nav-item mt-5 mt-lg-0 text-center">
-              <a class="nav-link btn-second me-lg-3" href="{{ route('login') }}">Login</a>
-            </li>
-            <li class="nav-item mt-3 mt-lg-0 text-center">
-              <a class="nav-link btn-first" href="{{ route('register') }}">Register</a>
-            </li>
+            @if (Auth::check())
+                <li class="nav-item mt-5 mt-lg-0 text-center">
+                  <form method="POST" action="{{ route(name: 'logout', absolute: false) }}"
+                      class="">
+                      @csrf
+                      <button type="submit" class="nav-link btn-second me-lg-3">Logout</button>
+                  </form>
+                </li>
+            @else
+              <li class="nav-item mt-5 mt-lg-0 text-center">
+                <a class="nav-link btn-second me-lg-3" href="{{ route('login') }}">Login</a>
+              </li>
+              <li class="nav-item mt-3 mt-lg-0 text-center">
+                <a class="nav-link btn-first" href="{{ route('register') }}">Register</a>
+              </li>
+            @endif
           </ul>
         </div>
     </div>
