@@ -17,6 +17,7 @@ use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -67,10 +68,12 @@ class ProductResource extends Resource
                     TextInput::make('price')
                     ->numeric()
                     ->minValue(0),
-                    // Checkbox::make('stock_status')
-                    // ->default(Product::STATUS_OUT_OF_STOCK)
-                    // ->live(),
-
+                    TextInput::make('price_sale')
+                    ->numeric()
+                    ->minValue(0),
+                    Checkbox::make('stock_status')
+                    ->default(Product::STATUS_IN_STOCK)
+                    ->live(),
                     TextInput::make('manage_stock')
                     ->numeric()
                     ->minValue(0)
@@ -84,11 +87,15 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('featured_image')
+                ->defaultImageUrl('https://www.psykososialberedskap.no/wp-content/themes/rvts_psb_sage-2.0/resources/assets/images/default-placeholder.png'),
                 TextColumn::make('name')->searchable()->sortable(),
                 TextColumn::make('category.name')->searchable()->sortable(),
                 TextColumn::make('price')->sortable()->money('idr'),
                 TextColumn::make('status')
-                ->formatStateUsing(fn (string $state): string => Product::STATUSSES[$state])
+                ->formatStateUsing(fn (string $state): string => Product::STATUSSES[$state]),
+                TextColumn::make('manage_stock')
+                ->label('Stock')
             ])
             ->filters([
                 //

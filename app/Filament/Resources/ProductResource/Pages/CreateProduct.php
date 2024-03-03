@@ -16,6 +16,7 @@ class CreateProduct extends CreateRecord
         $data['author_id'] = auth()->user()->id;
         $data['status'] = Product::ACTIVE;
         $data['publish_date'] = now();
+        $data['stock_status'] = $data['stock_status'] ? Product::STATUS_IN_STOCK : Product::STATUS_OUT_OF_STOCK;
         
         return $data;
     }
